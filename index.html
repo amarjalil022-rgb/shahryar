@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahryar Restaurant | Royal Pakistani & Bar-B-Q Dining Experience</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0b0b0e',
+                        carddark: '#14141a',
+                        cardborder: '#262630',
+                        goldaccent: '#d4af37',
+                        goldhover: '#f3e5ab',
+                        deeprust: '#8b2611'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0b0e; }
+        ::-webkit-scrollbar-thumb { background: #262630; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+        /* Advanced Hero Animations & 3D Lighting */
+        .perspective-container {
+            perspective: 1400px;
+        }
+
+        @keyframes meshDrift {
+            0% { transform: rotateX(25deg) scale(1.1) translateY(0px); }
+            50% { transform: rotateX(22deg) scale(1.15) translateY(-15px); }
+            100% { transform: rotateX(25deg) scale(1.1) translateY(0px); }
+        }
+
+        .hero-3d-grid {
+            background-image: 
+                linear-gradient(to right, rgba(212, 175, 55, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: meshDrift 12s ease-in-out infinite;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-30px) scale(1.08); }
+        }
+        .animate-orb-1 { animation: floatOrb 8s ease-in-out infinite; }
+        .animate-orb-2 { animation: floatOrb 10s ease-in-out infinite reverse; }
+
+        @keyframes badgeShine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shining-badge {
+            background: linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.3) 50%, rgba(212,175,55,0.1) 100%);
+            background-size: 200% 100%;
+            animation: badgeShine 4s linear infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.25); }
+            50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.6); }
+        }
+        .pulse-gold { animation: pulseGlow 3s infinite; }
+
+        .glass-panel {
+            background: rgba(20, 20, 26, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+        }
+        
+        .glass-nav {
+            background: rgba(11, 11, 14, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .menu-card {
+            transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s ease, border-color 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .menu-card:hover {
+            transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+            box-shadow: 0 25px 50px -15px rgba(212, 175, 55, 0.3);
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+
+        #preloader {
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        /* Order Cart Badge bounce */
+        @keyframes bounceShort {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-badge-bounce {
+            animation: bounceShort 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-gray-100 font-sans selection:bg-goldaccent selection:text-obsidian antialiased overflow-x-hidden">
+
+    <!-- LUXURY PRELOADER -->
+    <div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-obsidian">
+        <div class="relative flex items-center justify-center mb-6">
+            <div class="absolute w-28 h-28 border-2 border-goldaccent/20 border-t-goldaccent rounded-full animate-spin"></div>
+            <div class="w-16 h-16 bg-carddark rounded-full flex items-center justify-center border border-goldaccent/40 shadow-2xl">
+                <i class="fa-solid fa-utensils text-goldaccent text-2xl animate-pulse"></i>
+            </div>
+        </div>
+        <h2 class="font-serif text-2xl tracking-widest text-goldaccent uppercase mb-2">Shahryar</h2>
+        <p class="text-xs uppercase tracking-[0.3em] text-gray-400">Preparing Authentic Royal Feast...</p>
+    </div>
+
+    <!-- STICKY GLASSMORPHISM HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-cardborder transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-goldaccent to-amber-700 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-crown text-obsidian text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white block">SHAHRYAR</span>
+                    <span class="text-[10px] tracking-[0.25em] text-goldaccent uppercase block -mt-1 font-semibold">Restaurant & Bar-B-Q</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="#home" class="text-goldaccent hover:text-goldhover transition-colors">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-goldaccent transition-colors">Our Story</a>
+                <a href="#menu" class="text-gray-300 hover:text-goldaccent transition-colors">Royal Menu</a>
+                <a href="#experience" class="text-gray-300 hover:text-goldaccent transition-colors">Atmosphere</a>
+                <a href="#booking" class="text-gray-300 hover:text-goldaccent transition-colors">Reservations</a>
+            </nav>
+
+            <!-- Action CTA & Mobile Menu Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="#booking" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-goldaccent text-obsidian font-bold text-xs uppercase tracking-wider hover:bg-goldhover shadow-lg hover:shadow-goldaccent/20 transition-all transform hover:-translate-y-0.5 relative">
+                    <i class="fa-solid fa-bag-shopping"></i> Order Cart
+                    <span id="cart-counter" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-deeprust text-white text-[10px] font-extrabold rounded-full flex items-center justify-center border border-obsidian hidden">0</span>
+                </a>
+                
+                <!-- Hamburger Button -->
+                <button id="menu-btn" aria-label="Toggle Menu" class="md:hidden w-10 h-10 rounded-lg bg-carddark border border-cardborder flex flex-col items-center justify-center gap-1.5 focus:outline-none">
+                    <span class="w-5 h-0.5 bg-goldaccent transition-all transform origin-center" id="line1"></span>
+                    <span class="w-5 h-0.5 bg-goldaccent transition-all" id="line2"></span>
+                    <span class="w-5 h-0.5 bg-goldaccent transition-all transform origin-center" id="line3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE GLASSMORPHIC DRAWER MENU -->
+    <div id="mobile-menu" class="fixed inset-0 z-30 bg-obsidian/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 text-center transition-all duration-500 opacity-0 pointer-events-none md:hidden">
+        <a href="#home" class="mobile-link font-serif text-2xl text-white hover:text-goldaccent transition-colors">Home</a>
+        <a href="#about" class="mobile-link font-serif text-2xl text-white hover:text-goldaccent transition-colors">Our Story</a>
+        <a href="#menu" class="mobile-link font-serif text-2xl text-white hover:text-goldaccent transition-colors">Royal Menu</a>
+        <a href="#experience" class="mobile-link font-serif text-2xl text-white hover:text-goldaccent transition-colors">Atmosphere</a>
+        <a href="#booking" class="mobile-link font-serif text-2xl text-white hover:text-goldaccent transition-colors">Reservations & Order</a>
+        <div class="pt-4">
+            <a href="#menu" class="mobile-link px-8 py-3 rounded-full bg-goldaccent text-obsidian font-bold text-sm uppercase tracking-wider shadow-lg">
+                Explore Menu Now
+            </a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION WITH ENHANCED 3D ANIMATED ATMOSPHERE -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden perspective-container">
+        <!-- Animated 3D Perspective Grid Background -->
+        <div class="absolute inset-0 opacity-50 hero-3d-grid pointer-events-none"></div>
+        
+        <!-- Glowing Floating Atmospheric Orbs with Advanced Animation -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] sm:w-[700px] h-[400px] sm:h-[700px] bg-amber-600/15 rounded-full blur-[140px] pointer-events-none animate-orb-1"></div>
+        <div class="absolute bottom-10 right-10 w-[350px] h-[350px] bg-goldaccent/10 rounded-full blur-[120px] pointer-events-none animate-orb-2"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center z-10 flex flex-col items-center">
+            
+            <!-- Shining Badge -->
+            <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full shining-badge border border-goldaccent/40 text-goldaccent text-xs uppercase tracking-[0.25em] mb-6 shadow-2xl transition-transform hover:scale-105">
+                <i class="fa-solid fa-star text-[10px]"></i> Jail Road's Culinary Crown <i class="fa-solid fa-star text-[10px]"></i>
+            </div>
+
+            <!-- Main Heading with Depth Backdrop Effect -->
+            <div class="relative mb-6">
+                <span class="absolute -inset-1 text-4xl sm:text-7xl lg:text-8xl font-serif font-black tracking-tight text-goldaccent/10 select-none blur-sm pointer-events-none uppercase">
+                    Shahryar Restaurant
+                </span>
+                <h1 class="relative font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                    Where Every Bite <br class="hidden sm:inline">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-goldaccent via-amber-200 to-amber-500 animate-pulse">Earns a Royal Review</span>
+                </h1>
+            </div>
+
+            <!-- Tagline & Description -->
+            <p class="max-w-2xl text-gray-300 text-base sm:text-lg font-light leading-relaxed mb-10">
+                Immerse yourself in authentic Pakistani heritage, master-crafted Tandoori Bar-B-Q, legendary Chicken Karahis, and aromatic biryanis prepared with generational precision.
+            </p>
+
+            <!-- Call To Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-goldaccent to-amber-600 text-obsidian font-bold text-sm uppercase tracking-wider shadow-xl hover:shadow-goldaccent/30 hover:scale-105 transition-all text-center">
+                    <i class="fa-solid fa-book-open mr-2"></i> View Full Menu
+                </a>
+                <a href="#booking" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel text-white font-bold text-sm uppercase tracking-wider hover:border-goldaccent transition-all text-center">
+                    <i class="fa-brands fa-whatsapp text-goldaccent mr-2 text-base"></i> Book Table via WhatsApp
+                </a>
+            </div>
+
+            <!-- Floating 3D Highlight Stats Card Showcase -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-16 w-full max-w-4xl">
+                <div class="glass-panel p-5 rounded-2xl border border-cardborder text-center menu-card">
+                    <div class="text-goldaccent text-2xl sm:text-3xl font-serif font-bold mb-1">4.0 ?</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400">Google Verified (4,868+ Reviews)</div>
+                </div>
+                <div class="glass-panel p-5 rounded-2xl border border-cardborder text-center menu-card">
+                    <div class="text-goldaccent text-2xl sm:text-3xl font-serif font-bold mb-1">100%</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400">Authentic Desi Spices</div>
+                </div>
+                <div class="col-span-2 md:col-span-1 glass-panel p-5 rounded-2xl border border-cardborder text-center menu-card">
+                    <div class="text-goldaccent text-2xl sm:text-3xl font-serif font-bold mb-1">Daily</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400">12:00 PM – 12:00 AM</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BRAND STORY & HERITAGE SECTION -->
+    <section id="about" class="py-24 relative bg-carddark/50 border-t border-b border-cardborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Visual Showcase Grid with 3D Tilt -->
+                <div class="grid grid-cols-2 gap-4 relative">
+                    <div class="space-y-4">
+                        <div class="overflow-hidden rounded-2xl border border-cardborder menu-card h-64">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Restaurant Interior" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-goldaccent/20">
+                            <div class="font-serif text-goldaccent text-xl font-bold mb-1">Jail Road Landmark</div>
+                            <p class="text-xs text-gray-300 leading-relaxed">Strategically located in Faisalabad, serving legendary feasts to locals and travelers alike.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="glass-panel p-6 rounded-2xl border border-goldaccent/20 bg-gradient-to-br from-carddark to-obsidian">
+                            <i class="fa-solid fa-fire text-goldaccent text-2xl mb-3"></i>
+                            <div class="font-serif text-white text-lg font-bold mb-1">Coal-Fired Tradition</div>
+                            <p class="text-xs text-gray-400">Traditional charcoal Bar-B-Q pits ensuring deep smoky flavor perfection in every single skewer.</p>
+                        </div>
+                        <div class="overflow-hidden rounded-2xl border border-cardborder menu-card h-64">
+                            <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80" alt="Pakistani Cuisine" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-goldaccent/10 text-goldaccent text-xs uppercase tracking-[0.2em] mb-4">
+                        <i class="fa-solid fa-bookmark"></i> Our Culinary Story
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                        Crafting Legends on <span class="text-goldaccent">Jail Road</span> Since Inception
+                    </h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
+                        Nestled in the heart of Faisalabad (Punjab), Shahryar Restaurant stands as a culinary beacon for lovers of authentic Pakistani and traditional Desi gastronomy. Celebrated for our diverse menu featuring masterfully spiced curries, sizzling Bar-B-Q platters, and signature specialties, we take pride in delivering unforgettable dining experiences.
+                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8 font-light">
+                        Every single dish is prepared using fresh ingredients, hand-picked aromatic spices, and time-honored recipes that honor the rich tapestry of Pakistani culinary culture.
+                    </p>
+
+                    <!-- Feature List -->
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-goldaccent/10 flex items-center justify-center text-goldaccent">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-gray-200">Live Coal Bar-B-Q</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-goldaccent/10 flex items-center justify-center text-goldaccent">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-gray-200">Family Dining Halls</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-goldaccent/10 flex items-center justify-center text-goldaccent">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-gray-200">Fresh Tandoor Naan</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-goldaccent/10 flex items-center justify-center text-goldaccent">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-medium text-gray-200">Impeccable Hospitality</span>
+                        </div>
+                    </div>
+
+                    <a href="#booking" class="inline-flex items-center gap-2 text-goldaccent font-bold text-sm tracking-wider uppercase hover:text-goldhover transition-colors">
+                        <span>Reserve Your Royal Table</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DYNAMIC INTERACTIVE MENU GRID SECTION -->
+    <section id="menu" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-goldaccent text-xs uppercase tracking-[0.3em] font-semibold block mb-3">Authentic Flavors, Real Pricing</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-white mb-4">The Royal Menu Catalog</h2>
+                <p class="text-gray-400 text-sm sm:text-base">Explore our authentic dishes pulled directly from our verified menu listings. Click <span class="text-goldaccent font-semibold">"Add to Order"</span> to instantly compile your professional WhatsApp order slip!</p>
+            </div>
+
+            <!-- Category Filter Buttons (Touch Friendly & Auto-Scrollable on Mobile) -->
+            <div class="flex items-center justify-start md:justify-center gap-3 overflow-x-auto pb-4 mb-12 scrollbar-none px-2">
+                <button onclick="filterMenu('all')" class="category-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-goldaccent text-obsidian shadow-lg whitespace-nowrap active-filter" data-filter="all">
+                    All Royal Delicacies
+                </button>
+                <button onclick="filterMenu('signatures')" class="category-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-carddark text-gray-300 hover:text-goldaccent border border-cardborder whitespace-nowrap" data-filter="signatures">
+                    Signatures
+                </button>
+                <button onclick="filterMenu('karahi')" class="category-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-carddark text-gray-300 hover:text-goldaccent border border-cardborder whitespace-nowrap" data-filter="karahi">
+                    Karahis & Handis
+                </button>
+                <button onclick="filterMenu('bbq')" class="category-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-carddark text-gray-300 hover:text-goldaccent border border-cardborder whitespace-nowrap" data-filter="bbq">
+                    Bar-B-Q & Tikkas
+                </button>
+                <button onclick="filterMenu('soups')" class="category-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-carddark text-gray-300 hover:text-goldaccent border border-cardborder whitespace-nowrap" data-filter="soups">
+                    Soups & Chinese
+                </button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-8 gap-6">
+                
+                <!-- Item 1: Chicken Shahryar -->
+                <div class="menu-item glass-panel rounded-2xl overflow-hidden border border-cardborder menu-card flex flex-col justify-between" data-category="signatures">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80" alt="Chicken Shahryar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-goldaccent text-xs font-bold border border-goldaccent/30">
+                            ? 4.9 Rating
+                        </div>
+                        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-goldaccent text-obsidian text-xs font-extrabold uppercase">
+                            House Signature
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-white">Chicken Shahryar</h3>
+                                <span class="text-goldaccent font-serif font-bold text-lg">Rs. 765</span>
+                            </div>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                                Our legendary house specialty fried chicken—crispy golden on the outside, succulent and juicy on the inside, infused with special spices.
+                            </p>
+                        </div>
+                        <button onclick="addDishToOrder('Chicken Shahryar', 765)" class="w-full py-3 rounded-xl bg-carddark hover:bg-goldaccent text-goldaccent hover:text-obsidian font-bold text-xs uppercase tracking-wider border border-goldaccent/30 transition-all flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2: Chicken Karahi -->
+                <div class="menu-item glass-panel rounded-2xl overflow-hidden border border-cardborder menu-card flex flex-col justify-between" data-category="karahi">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=800&q=80" alt="Chicken Karahi" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-goldaccent text-xs font-bold border border-goldaccent/30">
+                            ? 4.8 Rating
+                        </div>
+                        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-deeprust text-white text-xs font-extrabold uppercase">
+                            Most Loved
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-white">Chicken Karahi (Full)</h3>
+                                <span class="text-goldaccent font-serif font-bold text-lg">Rs. 918</span>
+                            </div>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                                The most loved dish in Pakistan, prepared fresh in a traditional iron wok with farm-ripe tomatoes, green chillies, and in-house authentic spices.
+                            </p>
+                        </div>
+                        <button onclick="addDishToOrder('Chicken Karahi (Full)', 918)" class="w-full py-3 rounded-xl bg-carddark hover:bg-goldaccent text-goldaccent hover:text-obsidian font-bold text-xs uppercase tracking-wider border border-goldaccent/30 transition-all flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3: Chicken Seekh Kabab -->
+                <div class="menu-item glass-panel rounded-2xl overflow-hidden border border-cardborder menu-card flex flex-col justify-between" data-category="bbq">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1599487488170-ded1ec26ae5f?auto=format&fit=crop&w=800&q=80" alt="Chicken Seekh Kabab" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-goldaccent text-xs font-bold border border-goldaccent/30">
+                            ? 4.9 Rating
+                        </div>
+                        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-goldaccent text-obsidian text-xs font-extrabold uppercase">
+                            Coal Bar-B-Q
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-white">Chicken Seekh Kabab (4 Pcs)</h3>
+                                <span class="text-goldaccent font-serif font-bold text-lg">Rs. 756</span>
+                            </div>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                                Tender minced chicken blended with aromatic herbs and secret spices, expertly grilled over live charcoal coals for unbeatable smoky tenderness.
+                            </p>
+                        </div>
+                        <button onclick="addDishToOrder('Chicken Seekh Kabab (4 Pcs)', 756)" class="w-full py-3 rounded-xl bg-carddark hover:bg-goldaccent text-goldaccent hover:text-obsidian font-bold text-xs uppercase tracking-wider border border-goldaccent/30 transition-all flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4: Chicken Shashlik with Rice -->
+                <div class="menu-item glass-panel rounded-2xl overflow-hidden border border-cardborder menu-card flex flex-col justify-between" data-category="soups">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1525648199710-6726abda1844?auto=format&fit=crop&w=800&q=80" alt="Chicken Shashlik with Rice" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-goldaccent text-xs font-bold border border-goldaccent/30">
+                            ? 4.7 Rating
+                        </div>
+                        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-amber-700 text-white text-xs font-extrabold uppercase">
+                            Chinese Fusion
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-white">Chicken Shashlik with Rice</h3>
+                                <span class="text-goldaccent font-serif font-bold text-lg">Rs. 1,134</span>
+                            </div>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                                Juicy chicken cubes tossed with bell peppers, onions, and sweet-tangy shashlik sauce, served alongside aromatic fried egg rice.
+                            </p>
+                        </div>
+                        <button onclick="addDishToOrder('Chicken Shashlik with Rice', 1134)" class="w-full py-3 rounded-xl bg-carddark hover:bg-goldaccent text-goldaccent hover:text-obsidian font-bold text-xs uppercase tracking-wider border border-goldaccent/30 transition-all flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 5: Chicken Makhni Handi -->
+                <div class="menu-item glass-panel rounded-2xl overflow-hidden border border-cardborder menu-card flex flex-col justify-between" data-category="karahi">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80" alt="Chicken Makhni Handi" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-goldaccent text-xs font-bold border border-goldaccent/30">
+                            ? 4.9 Rating
+                        </div>
+                        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-goldaccent text-obsidian text-xs font-extrabold uppercase">
+                            Chef Special
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-white">Chicken Makhni Boneless Handi</h3>
+                                <span class="text-goldaccent font-serif font-bold text-lg">Rs. 954</span>
+                            </div>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                                Tender boneless chicken morsels cooked slow in a traditional clay pot with rich cream, organic butter, garlic, ginger, and mild spices.
+                            </p>
+                        </div>
+                        <button onclick="addDishToOrder('Chicken Makhni Boneless Handi', 954)" class="w-full py-3 rounded-xl bg-carddark hover:bg-goldaccent text-goldaccent hover:text-obsidian font-bold text-xs uppercase tracking-wider border border-goldaccent/30 transition-all flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 6: Chicken Tikka Piece -->
+                <div class="menu-item glass-panel rounded-2xl overflow-hidden border border-cardborder menu-card flex flex-col justify-between" data-category="bbq">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80" alt="Chicken Tikka Piece" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-goldaccent text-xs font-bold border border-goldaccent/30">
+                            ? 4.8 Rating
+                        </div>
+                        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-deeprust text-white text-xs font-extrabold uppercase">
+                            Traditional Bar-B-Q
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-white">Chicken Tikka Piece</h3>
+                                <span class="text-goldaccent font-serif font-bold text-lg">Rs. 432</span>
+                            </div>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                                Classic juicy chicken leg/breast piece marinated in yogurt, vinegar, and robust red spices, grilled over glowing embers to smoky perfection.
+                            </p>
+                        </div>
+                        <button onclick="addDishToOrder('Chicken Tikka Piece', 432)" class="w-full py-3 rounded-xl bg-carddark hover:bg-goldaccent text-goldaccent hover:text-obsidian font-bold text-xs uppercase tracking-wider border border-goldaccent/30 transition-all flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 7: Hot & Sour Soup -->
+                <div class="menu-item glass-panel rounded-2xl overflow-hidden border border-cardborder menu-card flex flex-col justify-between" data-category="soups">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80" alt="Hot & Sour Soup" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-goldaccent text-xs font-bold border border-goldaccent/30">
+                            ? 4.7 Rating
+                        </div>
+                        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-amber-700 text-white text-xs font-extrabold uppercase">
+                            Warm Starter
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-white">Hot & Sour Soup (Full)</h3>
+                                <span class="text-goldaccent font-serif font-bold text-lg">Rs. 558</span>
+                            </div>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                                Zesty blend of spicy and tangy broth filled with fresh vegetables, shredded chicken, eggs, and aromatic Chinese condiments.
+                            </p>
+                        </div>
+                        <button onclick="addDishToOrder('Hot & Sour Soup (Full)', 558)" class="w-full py-3 rounded-xl bg-carddark hover:bg-goldaccent text-goldaccent hover:text-obsidian font-bold text-xs uppercase tracking-wider border border-goldaccent/30 transition-all flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Order
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 8: Chicken Biryani -->
+                <div class="menu-item glass-panel rounded-2xl overflow-hidden border border-cardborder menu-card flex flex-col justify-between" data-category="signatures">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80" alt="Chicken Biryani" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-goldaccent text-xs font-bold border border-goldaccent/30">
+                            ? 5.0 Rating
+                        </div>
+                        <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-goldaccent text-obsidian text-xs font-extrabold uppercase">
+                            Must Try
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-white">Royal Chicken Biryani</h3>
+                                <span class="text-goldaccent font-serif font-bold text-lg">Rs. 690</span>
+                            </div>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+                                Fragrant aged basmati rice layered with tender spiced chicken, saffron, mint, and fried onions cooked in traditional Dum style.
+                            </p>
+                        </div>
+                        <button onclick="addDishToOrder('Royal Chicken Biryani', 690)" class="w-full py-3 rounded-xl bg-carddark hover:bg-goldaccent text-goldaccent hover:text-obsidian font-bold text-xs uppercase tracking-wider border border-goldaccent/30 transition-all flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Order
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ATMOSPHERE & VISUAL EXPERIENCE SECTION -->
+    <section id="experience" class="py-24 relative bg-carddark/50 border-t border-b border-cardborder overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-goldaccent text-xs uppercase tracking-[0.3em] font-semibold block mb-3">Immersive Ambience</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-white mb-4">The Shahryar Dining Atmosphere</h2>
+                <p class="text-gray-400 text-sm">Where opulent lighting meets traditional hospitality to create Faisalabad's most cherished dining environment.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="relative rounded-2xl overflow-hidden h-80 menu-card group border border-cardborder">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Dining Room" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-goldaccent text-xs uppercase tracking-widest font-bold mb-1">Main Hall</span>
+                        <h3 class="font-serif text-xl font-bold text-white">Spacious Royal Seating</h3>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden h-80 menu-card group border border-cardborder">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Grill Station" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-goldaccent text-xs uppercase tracking-widest font-bold mb-1">Live Kitchen</span>
+                        <h3 class="font-serif text-xl font-bold text-white">Charcoal Bar-B-Q Pits</h3>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden h-80 menu-card group border border-cardborder">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Family Feast" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-goldaccent text-xs uppercase tracking-widest font-bold mb-1">Celebrations</span>
+                        <h3 class="font-serif text-xl font-bold text-white">Family & Group Gatherings</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REFINED PROFESSIONAL ORDER & RESERVATION ENGINE SECTION -->
+    <section id="booking" class="py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-6 sm:p-12 rounded-3xl border border-goldaccent/30 shadow-2xl relative overflow-hidden">
+                
+                <!-- Background decorative glow -->
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-goldaccent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-goldaccent text-xs uppercase tracking-[0.3em] font-semibold block mb-3">Professional Direct Engine</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white mb-3">Complete Your Royal Order</h2>
+                    <p class="text-gray-300 text-xs sm:text-sm">Manage your interactive itemized cart below, specify your table reservation details, and send a structured, clean order slip straight to owner WhatsApp <span class="text-goldaccent font-semibold">(+92 345 7868377)</span>.</p>
+                </div>
+
+                <!-- PROFESSIONAL ITEMIZED CART TABLE / WRAPPER -->
+                <div class="mb-8 bg-obsidian/80 rounded-2xl border border-cardborder p-5 sm:p-6 shadow-inner">
+                    <div class="flex items-center justify-between pb-4 mb-4 border-b border-cardborder">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-receipt text-goldaccent"></i>
+                            <h3 class="font-serif text-white font-bold text-sm sm:text-base uppercase tracking-wider">Active Order Summary</h3>
+                        </div>
+                        <button type="button" onclick="clearOrderItems()" class="text-xs text-red-400 hover:text-red-300 transition-colors flex items-center gap-1 bg-red-500/10 px-3 py-1.5 rounded-lg border border-red-500/20">
+                            <i class="fa-solid fa-trash-can"></i> Clear All
+                        </button>
+                    </div>
+
+                    <!-- Cart Items Container -->
+                    <div id="cart-items-container" class="space-y-3 mb-4 max-h-64 overflow-y-auto pr-1">
+                        <div id="cart-empty-state" class="text-center py-8 text-gray-500 text-xs sm:text-sm italic">
+                            Your cart is currently empty. Browse the Royal Menu above and click <span class="text-goldaccent font-semibold">"Add to Order"</span>.
+                        </div>
+                    </div>
+
+                    <!-- Cart Total Calculation Box -->
+                    <div id="cart-total-box" class="pt-4 border-t border-cardborder flex items-center justify-between text-sm sm:text-base hidden">
+                        <span class="font-bold text-gray-300 uppercase tracking-wider text-xs">Total Estimated Amount:</span>
+                        <span id="cart-grand-total" class="font-serif font-bold text-goldaccent text-lg sm:text-xl">Rs. 0</span>
+                    </div>
+                </div>
+
+                <form id="whatsapp-order-form" onsubmit="sendWhatsAppOrder(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-goldaccent font-bold mb-2">Your Full Name *</label>
+                            <input type="text" id="cust-name" required placeholder="e.g. Shahzaib Khan" class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-cardborder text-white text-sm focus:border-goldaccent focus:outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-goldaccent font-bold mb-2">WhatsApp Phone Number *</label>
+                            <input type="tel" id="cust-phone" required placeholder="e.g. 0300 1234567" class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-cardborder text-white text-sm focus:border-goldaccent focus:outline-none transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-goldaccent font-bold mb-2">Number of Guests *</label>
+                            <select id="cust-guests" class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-cardborder text-white text-sm focus:border-goldaccent focus:outline-none transition-colors">
+                                <option value="1 Person">1 Person (Solo)</option>
+                                <option value="2 Guests" selected>2 Guests (Couples)</option>
+                                <option value="4 Guests">4 Guests (Family)</option>
+                                <option value="6-8 Guests">6-8 Guests (Gathering)</option>
+                                <option value="10+ VIP Feast">10+ VIP Feast</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-goldaccent font-bold mb-2">Preferred Date *</label>
+                            <input type="date" id="cust-date" required class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-cardborder text-white text-sm focus:border-goldaccent focus:outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-goldaccent font-bold mb-2">Preferred Time *</label>
+                            <input type="time" id="cust-time" required class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-cardborder text-white text-sm focus:border-goldaccent focus:outline-none transition-colors">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-goldaccent font-bold mb-2">Special Instructions / Custom Requests</label>
+                        <input type="text" id="cust-notes" placeholder="e.g. Extra spicy karahi, corner table preference..." class="w-full px-4 py-3.5 rounded-xl bg-obsidian border border-cardborder text-white text-sm focus:border-goldaccent focus:outline-none transition-colors">
+                    </div>
+
+                    <div class="pt-4 text-center">
+                        <button type="submit" class="w-full sm:w-auto px-10 py-4 rounded-full bg-gradient-to-r from-goldaccent to-amber-600 text-obsidian font-bold text-sm uppercase tracking-wider shadow-2xl hover:scale-105 hover:shadow-goldaccent/40 transition-all flex items-center justify-center gap-3 mx-auto">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Send Professional Order via WhatsApp
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-carddark border-t border-cardborder pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1 -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-goldaccent flex items-center justify-center">
+                            <i class="fa-solid fa-crown text-obsidian"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold tracking-wider text-white">SHAHRYAR</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                        Jail Road's premier destination for authentic Pakistani cuisine, succulent Bar-B-Q, and royal hospitality.
+                    </p>
+                    <div class="flex items-center gap-3 text-goldaccent">
+                        <a href="https://maps.app.goo.gl/1Rzpk1TPjzDgxV6o8" target="_blank" class="w-9 h-9 rounded-full bg-obsidian border border-cardborder flex items-center justify-center hover:bg-goldaccent hover:text-obsidian transition-colors">
+                            <i class="fa-solid fa-map-location-dot text-xs"></i>
+                        </a>
+                        <a href="https://wa.me/923457868377" target="_blank" class="w-9 h-9 rounded-full bg-obsidian border border-cardborder flex items-center justify-center hover:bg-goldaccent hover:text-obsidian transition-colors">
+                            <i class="fa-brands fa-whatsapp text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-serif text-white font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#home" class="hover:text-goldaccent transition-colors">Home Atmosphere</a></li>
+                        <li><a href="#about" class="hover:text-goldaccent transition-colors">Our Heritage</a></li>
+                        <li><a href="#menu" class="hover:text-goldaccent transition-colors">Royal Menu Catalog</a></li>
+                        <li><a href="#booking" class="hover:text-goldaccent transition-colors">Table Reservation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-serif text-white font-bold text-sm uppercase tracking-wider mb-4">Operating Hours</h4>
+                    <p class="text-xs text-gray-400 mb-2">Monday – Sunday</p>
+                    <p class="text-xs text-goldaccent font-bold mb-4">12:00 PM – 12:00 AM (Midnight)</p>
+                    <p class="text-[11px] text-gray-500">Dine-In, Takeaway, and Home Delivery Available.</p>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-serif text-white font-bold text-sm uppercase tracking-wider mb-4">Official Location</h4>
+                    <p class="text-xs text-gray-400 mb-3 leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-goldaccent mr-1"></i> Jail Road, Akbarabad, Faisalabad, Punjab 38001, Pakistan
+                    </p>
+                    <p class="text-xs text-gray-400">
+                        <i class="fa-solid fa-phone text-goldaccent mr-1"></i> +92 345 7868377
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="border-t border-cardborder pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; <span id="current-year">2026</span> Shahryar Restaurant. All Rights Reserved.</p>
+                <p class="mt-2 sm:mt-0 flex items-center gap-1">
+                    Crafted with <i class="fa-solid fa-heart text-deeprust"></i> for Elite Culinary Excellence.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PERMANENT FLOATING WHATSAPP WIDGET -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/923457868377?text=Hello%20Shahryar%20Restaurant,%20I%20would%20like%20to%20inquire%20about%20your%20menu%20and%20reservations." target="_blank" aria-label="WhatsApp Quick Chat" class="relative flex items-center justify-center w-14 h-14 rounded-full bg-emerald-600 text-white shadow-2xl pulse-gold hover:scale-110 transition-transform">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-goldaccent rounded-full border-2 border-obsidian animate-ping"></span>
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Preloader fade out
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.visibility = 'hidden';
+            }, 600);
+            
+            // Set default date to today in booking form
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('cust-date');
+            if(dateInput) dateInput.value = today;
+        });
+
+        // Sticky Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'shadow-2xl');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('py-2', 'shadow-2xl');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('opacity-0');
+            mobileMenu.classList.toggle('pointer-events-none');
+            
+            line1.classList.toggle('rotate-45');
+            line1.classList.toggle('translate-y-2');
+            line2.classList.toggle('opacity-0');
+            line3.classList.toggle('-rotate-45');
+            line3.classList.toggle('-translate-y-2');
+        }
+
+        menuBtn.addEventListener('click', toggleMobileMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // Dynamic Menu Filtering System
+        function filterMenu(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                if(btn.getAttribute('data-filter') === category) {
+                    btn.classList.remove('bg-carddark', 'text-gray-300', 'border', 'border-cardborder');
+                    btn.classList.add('bg-goldaccent', 'text-obsidian', 'shadow-lg');
+                } else {
+                    btn.classList.remove('bg-goldaccent', 'text-obsidian', 'shadow-lg');
+                    btn.classList.add('bg-carddark', 'text-gray-300', 'border', 'border-cardborder');
+                }
+            });
+
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if(category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'flex';
+                    setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    setTimeout(() => { item.style.display = 'none'; }, 300);
+                }
+            });
+        }
+
+        // Professional Itemized Cart Engine State
+        let cartItems = [];
+
+        function addDishToOrder(name, price) {
+            const existing = cartItems.find(item => item.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cartItems.push({ name: name, price: price, qty: 1 });
+            }
+            renderCart();
+            
+            // Trigger animation on cart counter badge
+            const counter = document.getElementById('cart-counter');
+            counter.classList.add('animate-badge-bounce');
+            setTimeout(() => counter.classList.remove('animate-badge-bounce'), 500);
+
+            // Smooth scroll to booking section
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateItemQuantity(index, change) {
+            cartItems[index].qty += change;
+            if (cartItems[index].qty <= 0) {
+                cartItems.splice(index, 1);
+            }
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cartItems.splice(index, 1);
+            renderCart();
+        }
+
+        function clearOrderItems() {
+            cartItems = [];
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const emptyState = document.getElementById('cart-empty-state');
+            const totalBox = document.getElementById('cart-total-box');
+            const grandTotalEl = document.getElementById('cart-grand-total');
+            const counter = document.getElementById('cart-counter');
+
+            // Update badge count
+            const totalItemsCount = cartItems.reduce((sum, i) => sum + i.qty, 0);
+            if (totalItemsCount > 0) {
+                counter.textContent = totalItemsCount;
+                counter.classList.remove('hidden');
+                totalBox.classList.remove('hidden');
+            } else {
+                counter.classList.add('hidden');
+                totalBox.classList.add('hidden');
+            }
+
+            if (cartItems.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-gray-500 text-xs sm:text-sm italic">
+                        Your cart is currently empty. Browse the Royal Menu above and click <span class="text-goldaccent font-semibold">"Add to Order"</span>.
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            let grandTotal = 0;
+
+            cartItems.forEach((item, index) => {
+                const itemTotal = item.price * item.qty;
+                grandTotal += itemTotal;
+
+                html += `
+                    <div class="flex items-center justify-between bg-carddark/90 border border-cardborder px-4 py-3 rounded-xl transition-all">
+                        <div class="flex-1 pr-3">
+                            <h4 class="text-white text-xs sm:text-sm font-bold font-serif">${item.name}</h4>
+                            <span class="text-goldaccent text-xs">Rs. ${item.price} each</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center bg-obsidian border border-cardborder rounded-lg overflow-hidden">
+                                <button type="button" onclick="updateItemQuantity(${index}, -1)" class="px-2.5 py-1 text-gray-400 hover:text-white hover:bg-cardborder transition-colors">-</button>
+                                <span class="px-3 text-xs font-bold text-white">${item.qty}</span>
+                                <button type="button" onclick="updateItemQuantity(${index}, 1)" class="px-2.5 py-1 text-gray-400 hover:text-white hover:bg-cardborder transition-colors">+</button>
+                            </div>
+                            <span class="font-serif font-bold text-white text-xs sm:text-sm w-20 text-right">Rs. ${itemTotal}</span>
+                            <button type="button" onclick="removeItem(${index})" class="text-red-400 hover:text-red-300 p-1 transition-colors" title="Remove item">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            grandTotalEl.textContent = `Rs. ${grandTotal.toLocaleString()}`;
+        }
+
+        // WhatsApp Order Compiler & Sender
+        function sendWhatsAppOrder(e) {
+            e.preventDefault();
+
+            if (cartItems.length === 0) {
+                alert('Please select at least one dish from the Royal Menu before sending your order.');
+                document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const guests = document.getElementById('cust-guests').value;
+            const date = document.getElementById('cust-date').value;
+            const time = document.getElementById('cust-time').value;
+            const notes = document.getElementById('cust-notes').value.trim();
+
+            const ownerWhatsApp = "923457868377";
+
+            let message = `?? *NEW ROYAL ORDER SLIP* ??\n`;
+            message += `----------------------------------------\n`;
+            message += `?? *Customer Name:* ${name}\n`;
+            message += `?? *Phone Number:* ${phone}\n`;
+            message += `?? *Guests / Party Size:* ${guests}\n`;
+            message += `?? *Preferred Date:* ${date}\n`;
+            message += `? *Preferred Time:* ${time}\n`;
+            message += `----------------------------------------\n`;
+            message += `??? *Itemized Order List:*\n`;
+
+            let grandTotal = 0;
+            cartItems.forEach((item, index) => {
+                const itemTotal = item.price * item.qty;
+                grandTotal += itemTotal;
+                message += `${index + 1}. ${item.name} x ${item.qty} = Rs. ${itemTotal}\n`;
+            });
+
+            message += `----------------------------------------\n`;
+            message += `?? *Grand Total:* Rs. ${grandTotal.toLocaleString()}\n`;
+            
+            if(notes) {
+                message += `----------------------------------------\n`;
+                message += `?? *Special Instructions:* ${notes}\n`;
+            }
+            message += `----------------------------------------\n`;
+            message += `?? *Shahryar Restaurant (Jail Road, Faisalabad)*`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${ownerWhatsApp}?text=${encodedMessage}`;
+
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Dynamic Year Updater
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
